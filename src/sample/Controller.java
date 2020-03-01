@@ -53,7 +53,7 @@ public class Controller implements Initializable {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             try {
-                stmt.execute("CREATE TABLE Num2DB (" +
+                stmt.execute("CREATE TABLE Numbers (" +
                         "Num VARCHAR(36) )");
 
                 System.out.println("TABLE CREATED");
@@ -61,7 +61,7 @@ public class Controller implements Initializable {
                 System.out.println("TABLE ALREADY EXISTS, NOT CREATED");
             }
             String potato = String.valueOf(Num);
-            String sql = "INSERT INTO Num2DB VALUES" +
+            String sql = "INSERT INTO Numbers VALUES" +
                     "('" + potato + "')";
             System.out.println("L");
             stmt.executeUpdate(sql);
@@ -79,7 +79,7 @@ public class Controller implements Initializable {
         try {
             Connection conn = DriverManager.getConnection(URL);
             Statement stmt = conn.createStatement();
-            String sqlStatement = "SELECT Num FROM Num2DB";
+            String sqlStatement = "SELECT Num FROM Numbers";
             ResultSet result = stmt.executeQuery(sqlStatement);
             ObservableList<NumDB> dbEmployeeList = FXCollections.observableArrayList();
             while (result.next()) {
