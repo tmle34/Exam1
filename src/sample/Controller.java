@@ -19,6 +19,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.lang.Math;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static jdk.internal.org.objectweb.asm.TypeReference.CAST;
 
@@ -43,9 +44,7 @@ public class Controller implements Initializable {
     ListView TableViewNums;
 
     private void runNum(int min, int max, String url) {
-        double randomDouble = Math.random();
-        randomDouble = randomDouble * max + min;
-        int Num = (int) randomDouble;
+        int Num = ThreadLocalRandom.current().nextInt(min, max + 1);
         Num1.setText(String.valueOf(Num));
 
         try {
